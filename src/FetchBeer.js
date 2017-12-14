@@ -6,6 +6,7 @@ export default class FetchBeer extends React.Component{
         super(props);
         this.state={
            data:[],
+           dataScrol:[]
         }
     }
     componentDidMount(){
@@ -15,11 +16,14 @@ export default class FetchBeer extends React.Component{
     FetchBeers=()=>{
         axios.get('https://api.punkapi.com/v2/beers')
         .then(response=>{
-            console.log(response);  
-           this.setState({data: response})
-           console.log ('dataxxx', this.state.data)
+          console.log('dlugos', response.data);  
+           this.setState({data: response.data.slice(0, 20),
+                          dataScrol: response.data.slice(20, 25)    
         })
+          console.log (this.state.data)
+          console.log (this.state.dataScrol)
         
+        })
         .catch(error=>{
             console.log(error);
         });     

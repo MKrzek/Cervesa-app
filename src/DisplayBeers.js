@@ -4,8 +4,14 @@ import _ from 'lodash';
 export default class DisplayBeers extends React.Component{
     
     ShowBeer=()=>{
-        return  _.map(this.props.data.data, beer => { 
-                  return <BeerItem beer={beer} key={beer.id}/>                 
+        console.log('this.props.data', this.props.data)
+        return  _.map(this.props.data, beer => { 
+                    
+                    console.log ('beer', beer)
+                    
+                    return <BeerItem beer={beer} key={beer.id}/> 
+                    
+                         
     });
 };
 
