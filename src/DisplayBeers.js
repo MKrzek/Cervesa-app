@@ -9,7 +9,12 @@ export default class DisplayBeers extends React.Component{
             display: 'block',
         }
     }
-    
+    componentDidMount(){
+        window.addEventListener('scroll', this.handleClick);
+    };
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleClick);
+    }
     ShowBeer=()=>{
         return  _.map(this.props.data, beer => {  
                 return <BeerItem beer={beer} key={beer.id}/>                      
