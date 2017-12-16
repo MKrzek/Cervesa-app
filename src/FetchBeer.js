@@ -1,6 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
+
 import DisplayBeers from './DisplayBeers.js';
+
 export default class FetchBeer extends React.Component{
     constructor(props){
         super(props);
@@ -28,7 +31,19 @@ export default class FetchBeer extends React.Component{
     render(){
         const data=this.state.data
         return <div>
-                  <DisplayBeers data={data} dataScrol={this.state.dataScrol}/>
+                    <nav className = 'navbar navbar-default' > 
+                        <div className='container-fluid'>
+                            <div className='navbar-header'>
+                                 <h2 className='navbar-brand'>Your Cervesa App</h2 >
+                             </div>
+                        <ul className='nav navbar-nav navbar-right'>
+                             <li className='nav-item' key={1}>
+                               <Link className='nav-link' to='/favourite'>Your favourites</Link>
+                             </li>
+                        </ul>
+                        </div> 
+                    </nav>
+                <DisplayBeers data={data} dataScrol={this.state.dataScrol}/>
                </div>
     }
 }
