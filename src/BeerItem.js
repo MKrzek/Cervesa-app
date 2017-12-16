@@ -13,10 +13,15 @@ export default class BeerItem extends React.Component{
        
     }
 
-    render(){
-        
+    
+
+    render(){ 
         return <div>
+                <div>
                   {this.ShowItem()}
                </div>
+               
+              </div>
+               
         }
     }

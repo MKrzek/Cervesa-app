@@ -31,7 +31,7 @@ export default class FetchBeer extends React.Component{
     render(){
         const data=this.state.data
         return <div>
-                  <DisplayBeers data={data}/>
+                  <DisplayBeers data={data} dataScrol={this.state.dataScrol}/>
                </div>
     }
 }
