@@ -5,21 +5,23 @@ export default class DisplayBeers extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            loading: false
+            loading: false,
+            display: 'block',
         }
     }
     
     ShowBeer=()=>{
         return  _.map(this.props.data, beer => {  
-                return <BeerItem beer={beer} key={beer.id}/> 
-                    
-                         
+                return <BeerItem beer={beer} key={beer.id}/>                      
     });
 };
     handleClick=()=>{
       this.setState({
-          loading: true
-    })
+          loading: true,
+          display: 'none',
+    });
+
+
     }
     render(){
     const moreBeers = _.map(this.props.dataScrol, beer => {   
@@ -32,7 +34,7 @@ export default class DisplayBeers extends React.Component{
                </div>
                <div>     
                 </div> 
-                     <button onClick={this.handleClick}>Show more beer</button>
+                     <button onClick={this.handleClick} style={{display: this.state.display}}>Show more beer</button>
                    <div>
                         {this.state.loading ? (moreBeers): null}
                    </div>
