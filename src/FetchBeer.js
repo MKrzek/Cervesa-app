@@ -20,9 +20,6 @@ export default class FetchBeer extends React.Component{
            this.setState({data: response.data.slice(0, 20),
                           dataScrol: response.data.slice(20, 25)    
         })
-          console.log (this.state.data)
-          console.log (this.state.dataScrol)
-        
         })
         .catch(error=>{
             console.log(error);

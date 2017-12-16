@@ -5,3 +5,7 @@
 .displayButton{
   display: none
 }
+.navbar-right{
+  display:flex;
+  flex-direction: row
+}
