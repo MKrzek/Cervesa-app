@@ -13,8 +13,8 @@ class App extends Component {
   render() {
     return (
          <Switch>
-              <Route path = '/detail' component = {FetchBeer} />
               <Route path = '/detail/:id' component = {BeerDetail} />
+              <Route path = '/detail' component = {FetchBeer} />
               <Route path = '/favourite' component = {FavouriteBeer} />
               <Route extact path='/' component={Main}/>
              

@@ -32,7 +32,7 @@ export default class DisplayBeers extends React.Component{
     };
     render(){
     const moreBeers = _.map(this.props.dataScrol, beer => {   
-          console.log('beer', beer)  
+         
           return   <BeerItem beer={beer} key={beer.id}/>
                        
     });

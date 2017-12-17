@@ -1,7 +1,35 @@
 import React from 'react';
+import axios from 'axios';
 export default class DisplayBeer extends React.Component{
+constructor(props){
+    super(props);
+    this.state={
+        detailData:[],
+        
+    }
+    
+}
+componentDidMount(){
+    const {id}=this.props.match.params;
+ this.FetchDetailData(id)
+}
+
+
+FetchDetailData=(id)=>{
+    
+axios.get(`https://api.punkapi.com/v2/beers/${id}`)
+.then(response=>{
+    
+    this.setState({
+        detailData:response.data[0]
+    });
+    console.log(this.state.detailData)
+})
+};
+
     render(){
-        const{name, brewers_tips, image_url, abv, description}=this.props.beer
+        
+        const{name, image_url, description, abv, brewers_tips}=this.state.detailData;
         return(
             <div>
                 <h3>{name}</h3>
@@ -14,4 +42,4 @@ export default class DisplayBeer extends React.Component{
 
         
     }
-}
+};
