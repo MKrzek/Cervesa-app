@@ -1,5 +1,6 @@
 import React from 'react';
 import BeerItem from './BeerItem.js';
+
 import _ from 'lodash';
 export default class DisplayBeers extends React.Component{
     constructor(props){
@@ -7,16 +8,19 @@ export default class DisplayBeers extends React.Component{
         this.state={
             loading: false,
             display: 'block',
-            noDisplay: 'none'
+            noDisplay: 'none', 
+           
+
         };
     };
-
     //componentDidMount(){
      //   window.addEventListener('scroll', this.handleClick);
     //};
     //componentWillUnmount(){
     ///    window.removeEventListener('scroll', this.handleClick);
     //};*/}
+
+    
 
     ShowBeer=()=>{
         return  _.map(this.props.data, beer => {  
@@ -32,10 +36,9 @@ export default class DisplayBeers extends React.Component{
     };
     render(){
     const moreBeers = _.map(this.props.dataScrol, beer => {   
-         
-          return   <BeerItem beer={beer} key={beer.id}/>
-                       
+          return   <BeerItem beer={beer} key={beer.id}/>                  
     });
+
     return <div>
                 <div>
                   {this.ShowBeer()}

@@ -17,11 +17,11 @@ export default class FetchBeer extends React.Component{
     }
 
     FetchBeers=()=>{
-        axios.get('https://api.punkapi.com/v2/beers')
+        axios.get('https://api.punkapi.com/v2/beers?page=1&per_page=80')
         .then(response=>{
           console.log('dlugos', response.data);  
            this.setState({data: response.data.slice(0, 20),
-                          dataScrol: response.data.slice(20, 25)    
+                          dataScrol: response.data.slice(20, 80)    
         })
         })
         .catch(error=>{
