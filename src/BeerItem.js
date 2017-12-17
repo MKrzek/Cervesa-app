@@ -1,5 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import BeerDetail from './BeerDetail.js';
+
 export default class BeerItem extends React.Component{
     constructor(props){
         super(props);
@@ -9,10 +11,10 @@ export default class BeerItem extends React.Component{
     }
     
     ShowItem=()=>{
-        const{name, tagline, image_url}=this.props.beer;
+        const{name, tagline, image_url, id}=this.props.beer;
             
             return <div onClick={this.showDetail}>
-                     {name}
+                     <Link to={`/detail/${id}`}>{name}</Link>
                      {tagline}
                      <img src={image_url} alt='beer'/>
                     </div>
@@ -20,9 +22,13 @@ export default class BeerItem extends React.Component{
     }
 
     showDetail=()=>{
+        let id=this.props.beer.id;
+        console.log ('id', id)
+        
         this.setState({
             detail: true,
         })
+       
     }
 
     render(){ 
@@ -31,7 +37,7 @@ export default class BeerItem extends React.Component{
                   {this.ShowItem()}
                </div>
                <div>
-    {this.state.detail? (<BeerDetail beer={this.props.beer}/>):null}
+                      {this.state.detail? (<BeerDetail beer={this.props.beer}/>):null}
                 </div>
                 
                

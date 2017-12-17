@@ -14,9 +14,10 @@ class App extends Component {
     return (
          <Switch>
               <Route path = '/detail' component = {FetchBeer} />
+              <Route path = '/detail/:id' component = {BeerDetail} />
               <Route path = '/favourite' component = {FavouriteBeer} />
               <Route extact path='/' component={Main}/>
-              <Route path='/detail/:id' component={BeerDetail}/>   
+             
           </Switch>
        
     );
