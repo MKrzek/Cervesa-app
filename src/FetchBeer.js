@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {RingLoader} from 'react-spinners';
 
 import DisplayBeers from './DisplayBeers.js';
 
@@ -9,7 +10,8 @@ export default class FetchBeer extends React.Component{
         super(props);
         this.state={
            data:[],
-           dataScrol:[]
+           dataScrol:[],
+           loading: true
         }
     }
     componentDidMount(){
@@ -43,7 +45,11 @@ export default class FetchBeer extends React.Component{
                         </ul>
                         </div> 
                     </nav>
-                <DisplayBeers data={data} dataScrol={this.state.dataScrol}/>
-               </div>
+                    <div className='sweet-loading'>
+                    <RingLoader color={'#123abc'} loading={this.state.loading}/>
+                    </div>
+                      <DisplayBeers data = {data} dataScrol = {this.state.dataScrol} />
+                    
+                     </div>
     }
 }

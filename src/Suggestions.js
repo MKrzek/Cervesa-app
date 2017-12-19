@@ -1,13 +1,22 @@
 import React from 'react';
+import BeerItem from './BeerItem.js';
+
+import axios from 'axios';
 export default class Suggestions extends React.Component{
     constructor(props){
         super (props);
         this.state={
+            
             sugIbu : [],
             sugAbv : [],
             sugEbc : []
         }
+    
     } 
+    
+        
+    
+
 FetchIbu = () => {
     const {ibu} = this.state.detailData;
     console.log('ibu', ibu)
@@ -42,6 +51,7 @@ FetchEbc = () => {
 
 
     render(){
+       console.log ('data', this.props.detailData)
         return <div>
                 Suggestions:
                 <BeerItem beer={this.state.sugIbu}/>

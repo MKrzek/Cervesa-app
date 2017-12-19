@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import BeerItem from './BeerItem.js';
+import Suggestions from './Suggestions.js';
 
 export default class DisplayBeer extends React.Component{
 constructor(props){
@@ -29,7 +29,7 @@ FetchDetailData=(id)=>{
     render(){
         const{name, image_url, description, abv, brewers_tips}=this.state.detailData;
         return(
-           
+            <div>
             <div>
                 <h3>{name}</h3>
                 <img src={image_url} alt='beer'/> 
@@ -37,7 +37,9 @@ FetchDetailData=(id)=>{
                 <div>{abv}</div>
                 <div>{brewers_tips}</div>
             </div>
-           
+                <Suggestions detailData={this.state.detailData}/>
+            </div>
+                 
            
  
         )   
