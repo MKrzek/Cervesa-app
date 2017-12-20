@@ -46,9 +46,9 @@ export default class FetchBeer extends React.Component{
                         </div> 
                     </nav>
                     <div className='sweet-loading'>
-                    <RingLoader color={'#123abc'} loading={this.state.loading}/>
+                        <RingLoader color={'#123abc'} loading={this.state.loading}/>
                     </div>
-                      <DisplayBeers data = {data} dataScrol = {this.state.dataScrol} />
+                        <DisplayBeers data = {data} dataScrol = {this.state.dataScrol} />
                     
                      </div>
     }

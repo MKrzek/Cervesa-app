@@ -6,14 +6,13 @@ export default class Suggestions extends React.Component{
     constructor(props){
         super (props);
         this.state={
-            
             sugIbu : [],
             sugAbv : [],
             sugEbc : []
-        }
+        };
     
-    } 
-    
+    };
+   
         
     
 

@@ -2,6 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 export default class FavouriteBeer extends React.Component{
+
+componentDidMount(){
+  this.displayBeers()
+
+}
+
+displayBeers=()=>{
+  const beers=JSON.parse(localStorage.getItem('MyFavBeers'))||[];
+}
+
     render(){
         return <div>
                     <nav className = 'navbar navbar-default'> 

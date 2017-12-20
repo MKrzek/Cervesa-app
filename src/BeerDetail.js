@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Suggestions from './Suggestions.js';
+import LocalStorage from './LocalStorage.js';
 
 export default class DisplayBeer extends React.Component{
 constructor(props){
@@ -26,6 +27,9 @@ FetchDetailData=(id)=>{
     
 })
 };
+
+   
+   
     render(){
         const{name, image_url, description, abv, brewers_tips}=this.state.detailData;
         return(
@@ -36,6 +40,9 @@ FetchDetailData=(id)=>{
                 <div>{description}</div>
                 <div>{abv}</div>
                 <div>{brewers_tips}</div>
+
+                
+               <LocalStorage beer={this.state.detailData}/>
             </div>
                 <Suggestions detailData={this.state.detailData}/>
             </div>
@@ -44,4 +51,7 @@ FetchDetailData=(id)=>{
  
         )   
     }
-};
+}
+
+
+
