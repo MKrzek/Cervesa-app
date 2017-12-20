@@ -14,27 +14,21 @@ alertOptions = {
 
 handleAdd = (event) => {
     event.preventDefault();
-    const storedbeer = this.props.beer;
     const beers = JSON.parse(localStorage.getItem('myFavBeers'))||[];
-    console.log('beers', beers);
-    
     if (beers.length>0){
       for (let i=0; i<beers.length;i++){
-        console.log ('dlugos beers', beers.length)
              if (this.props.beer.id===beers[i].id){
                  return false
              }else{
-                 console.log('this props beer id', this.props.beer.id)
-                 const myFavBeers = [storedbeer, ...beers];
-                 console.log('fav in warunek', myFavBeers)
+                 const myFavBeers = [this.props.beer, ...beers];
                  localStorage.setItem('myFavBeers', JSON.stringify(myFavBeers))
              }
-    }   
-} else { const myFavBeers = [storedbeer]
+    };  
+}else { const myFavBeers = [this.props.beer]
         localStorage.setItem('myFavBeers', JSON.stringify(myFavBeers))
 
-}  
-    this.msg.show('Your beer has been saved', {
+};
+ this.msg.show('Your beer has been saved', {
             time: 2000,
             type: 'success'
         })

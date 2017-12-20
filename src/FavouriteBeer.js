@@ -1,16 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import BeerItem from './BeerItem.js';
 export default class FavouriteBeer extends React.Component{
 
-componentDidMount(){
-  this.displayBeers()
 
-}
 
 displayBeers=()=>{
-  const beers=JSON.parse(localStorage.getItem('MyFavBeers'))||[];
-}
+  const beers=JSON.parse(localStorage.getItem('myFavBeers'))||[];
+  console.log ('beers', beers);
+  return beers.map(beer=>{
+    console.log('beer', beer)
+    return <BeerItem beer={beer} key={beer.id}/>
+  })
+
+};
 
     render(){
         return <div>
@@ -26,6 +29,10 @@ displayBeers=()=>{
                           </ul>
                         </div> 
                     </nav>
+                    <div>
+                       {this.displayBeers()}
+                    </div>
                </div>
+
     }
 }
