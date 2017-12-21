@@ -11,7 +11,8 @@ export default class FetchBeer extends React.Component{
         this.state={
            data:[],
            dataScrol:[],
-           loading: true
+           loading: true,
+           allData:[]
         }
     }
     componentDidMount(){
@@ -21,17 +22,17 @@ export default class FetchBeer extends React.Component{
     FetchBeers=()=>{
         axios.get('https://api.punkapi.com/v2/beers?page=1&per_page=80')
         .then(response=>{
-          console.log('dlugos', response.data);  
            this.setState({data: response.data.slice(0, 20),
-                          dataScrol: response.data.slice(20, 80)    
-        })
+                          dataScrol: response.data.slice(20, 80), 
+                          allData: response.data
+        });   
         })
         .catch(error=>{
             console.log(error);
         });     
     }
     render(){
-        const data=this.state.data
+        const data=this.state.data;
         return <div>
                     <nav className = 'navbar navbar-default' > 
                         <div className='container-fluid'>
@@ -49,7 +50,6 @@ export default class FetchBeer extends React.Component{
                         <RingLoader color={'#123abc'} loading={this.state.loading}/>
                     </div>
                         <DisplayBeers data = {data} dataScrol = {this.state.dataScrol} />
-                    
-                     </div>
+                </div>
     }
 }

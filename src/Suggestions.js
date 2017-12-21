@@ -6,67 +6,88 @@ export default class Suggestions extends React.Component{
     constructor(props){
         super (props);
         this.state={
-            loadingIbu:false,
+            allData: [],
+            loadingIbu: false,
             laodingAbv: false,
             laodingEbc: false,
             sugIbu : [],
+            ibuArray:[],
             sugAbv : [],
-            sugEbc : []
+            abvArray:[],
+            sugEbc : [],
+            ebcArray:[],
         };
-    
-    };
-   
- showSuggestions=()=>{
-     this.FetchAbv();
-     this.FetchEbc();
-     this.FetchIbu();
- }       
-    
+};
+componentDidMount() {
+    this.FetchArrays();
+}
 
-FetchIbu = () => {
-    const ibu = Math.floor(this.props.detailData.ibu);
-    console.log('ibu', ibu)
-    axios
-        .get(`https://api.punkapi.com/v2/beers?ibu_gt=${ibu - 1}&ibu_lt=${ibu + 1}`)
+FetchArrays = () => {
+    axios.get('https://api.punkapi.com/v2/beers?page=1&per_page=80')
         .then(response => {
-            this.setState({sugIbu: response.data[1],
-                            loadingIbu:true,
-                            })
-            console.log('sugIbu', this.state.sugIbu)
-        })
+            this.setState({
+                allData: response.data});    
+})
+        .catch(error => {
+           console.log(error);});
+};
+ showSuggestions=()=>{
+     //this.FetchAbv();
+     //this.FetchEbc();
+     this.SetIbu();
+};       
+    
+SetIbu = () => {
+    const ibu =this.props.detailData.id;
+    console.log ('ibu', ibu)
+    const newIbuArray = this.state.allData.sort((a, b) => { return a.ibu - b.ibu});
+    console.log (newIbuArray)
+    const index=newIbuArray.map(beer=>{
+        beer.id=ibu
+    })
+    console.log('indexibu', index)
+    const ibuSug=newIbuArray[index+1];
+    console.log('ibuSug', ibuSug)
+    
+            this.setState({sugIbu: ibuSug,
+                           loadingIbu:true,})
+
 };
 
 FetchAbv = () => {
-    const abv = Math.floor(this.props.detailData.abv)
-    axios
-        .get(`https://api.punkapi.com/v2/beers?abv_gt=${abv - 1}&abv_lt=${abv + 1}`)
+    const abv = this.props.detailData.abv;
+    console.log('abv', abv)
+     console.log(this.state.abvArray);
+    const index=this.state.abvArray.indexOf(abv);
+    const num=this.state.abvArray[index+1];
+     console.log('numabv', num)
+    axios.get(`https://api.punkapi.com/v2/beers?abv=${num}`)
         .then(response => {
-            this.setState({sugAbv: response.data[1],
+            this.setState({sugAbv: response.data,
                            loadingAbv: true})
             console.log('sugAbv', this.state.sugAbv)
         })
 };
 FetchEbc = () => {
-    const ebc = Math.floor(this.props.detailData.ebc);
-    axios
-        .get(`https://api.punkapi.com/v2/beers?ebc_gt=${ebc - 1}&ebc_lt=${ebc + 1}`)
+    const ebc = this.props.detailData.ebc;
+    console.log(this.state.ebcArray);
+    const index=this.state.ebcArray.indexOf(ebc);
+    const num=this.state.ebcArray[index+1];
+    console.log('numebc', num)
+    axios.get(`https://api.punkapi.com/v2/beers?ebc=${num}`)
         .then(response => {
-            this.setState({sugEbc: response.data[1],
+            this.setState({sugEbc: response.data,
                            loadingEbc: true})
         });
     console.log('sugEbc', this.state.sugEbc)
-}
+};
    
-
-
     render(){
-       console.log ('data', this.props.detailData)
-        return <div>
-                
+        return <div> 
                 <button onClick={this.showSuggestions}>Show other similar beers</button>
                 {this.state.loadingIbu?(<BeerItem beer={this.state.sugIbu}/>): null}
-                {this.state.loadingAbv?(<BeerItem beer={this.state.sugAbv}/>):null}
-                {this.state.loadingEbc ?(<BeerItem beer={this.state.sugEbc}/>) : null}
+                {this.state.loadingAbv?(<BeerItem beer={this.state.sugAbv}/>): null}
+                {this.state.loadingEbc ?(<BeerItem beer={this.state.sugEbc}/>): null}
                </div>
     }
 }
