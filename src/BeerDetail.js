@@ -9,15 +9,17 @@ constructor(props){
     super(props);
     this.state={
         detailData:[], 
+        idParams:this.props.match.params.id
       
     } 
 }
 componentDidMount(){
-    console.log('params', this.props.match.params)
-    const {id}=this.props.match.params;
-    this.FetchDetailData(id);
+ console.log('params', this.props.match.params)
+ const {id}=this.props.match.params;
+  this.FetchDetailData(id);
    
 };
+
 
 FetchDetailData=(id)=>{
     axios.get(`https://api.punkapi.com/v2/beers/${id}`)
@@ -26,9 +28,13 @@ FetchDetailData=(id)=>{
         detailData:response.data[0],
     });
     
+    
 })
 };
     render(){
+        if (this.state.idParams!==this.props.match.params.id){
+            window.location.reload();
+        };
         const{name, image_url, description, abv, brewers_tips}=this.state.detailData;
         return(
             <div>
@@ -44,6 +50,7 @@ FetchDetailData=(id)=>{
                   </div> 
                 </nav>
             <div>
+                
                 <h3>{name}</h3>
                 <img src={image_url} alt='beer'/> 
                 <div>{description}</div>

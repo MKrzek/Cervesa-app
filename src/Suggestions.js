@@ -41,7 +41,7 @@ FetchArrays = () => {
     
 SetIbu = () => {
     const id =this.props.detailData.id;
-    const newIbuArray = this.state.allData.sort((a, b) => { return a.ibu - b.ibu});
+    const newIbuArray = this.state.allData.sort((a, b) => {return a.ibu - b.ibu});
     let indexArray=[];
     Object.getOwnPropertyNames(newIbuArray).forEach(
         (val, idx, array)=>{
@@ -88,6 +88,7 @@ FetchEbc = () => {
    
     render(){
         return <div> 
+                Similar beers: 
                 <button onClick={this.showSuggestions} style={{display:this.state.display}}>Show other similar beers</button>
                 {this.state.loadingIbu?(<BeerItem beer={this.state.sugIbu}/>): null}
                 {this.state.loadingAbv?(<BeerItem beer={this.state.sugAbv}/>): null}
