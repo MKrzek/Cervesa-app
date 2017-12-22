@@ -38,14 +38,15 @@ FetchDetailData=(id)=>{
         const{name, image_url, description, abv, brewers_tips}=this.state.detailData;
         return(
             <div>
-                <nav className = 'navbar navbar-default' > <div className='container-fluid'>
+                <nav className = 'navbar navbar-default'> 
+                 <div className='container-fluid'>
                   <div className='navbar-header'>
-                      <h2 className='navbar-brand'>Your Cervesa App</h2>
+                     <h2 className='navbar-brand'>Your Cervesa</h2>
                   </div>
-                   <ul className='nav navbar-nav navbar-right'>
-                        <li className='nav-item' key={1}>
+                        <ul className='nav navbar-nav navbar-right'>
+                            <li className='nav-item' key={1}>
                               <Link className='nav-link' to='/detail'>Beers</Link>
-                        </li>
+                            </li>
                    </ul>
                   </div> 
                 </nav>
@@ -59,7 +60,7 @@ FetchDetailData=(id)=>{
                       <h6 className='text-center mb-2'>{description}</h6>
                       <div className='text-center mb-2'>Abv: {abv}</div>
                       <div className='text-center text-muted mb-5'>{brewers_tips}</div>
-                     <LocalStorage beer={this.state.detailData}/>
+                       <LocalStorage beer={this.state.detailData}/>
                      </div>
                </div>
 

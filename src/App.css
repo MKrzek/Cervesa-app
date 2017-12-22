@@ -5,23 +5,32 @@
 body{
   padding-top:65px;
 }
+
 .displayButton{
-  display: none
+  display: none;
 }
+
 nav{
-  background-color: white;
+  background-color: #f44b40;
   
 }
+
 .navbar-right{
   display:flex;
-  flex-direction: row
+  flex-direction: row;
 }
+
 .navbar-default{
  overflow: hidden;
  position: fixed;
  top: 0;
- width:100%;
- 
+ width:100%; 
+}
+.navbar-brand{
+  color: #f9f9f9;
+}
+.nav-link{
+  color: #f9f9f9;
 }
 img{
   
@@ -32,24 +41,25 @@ img{
 
 .beerItem{
   width: 250px;
-  height: 370px;
-  
+  height: 370px; 
   margin-left: 10px;
-  margin-top: 10px;
-  
+  margin-top: 10px; 
 }
 
 .tagLine{
   margin-top: 7px;
   margin-bottom: 10px;
 }
+
 .btn-wrap-text {
     white-space: normal !important;
     word-wrap: break-word !important;
 }
+
 div.rowDetail{
    margin-top: 100px;
 }
+
 div.col-md-4>img{
   height: 500px;
 }
