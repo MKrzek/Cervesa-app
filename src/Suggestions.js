@@ -11,11 +11,10 @@ export default class Suggestions extends React.Component{
             laodingAbv: false,
             laodingEbc: false,
             sugIbu : [],
-            ibuArray:[],
             sugAbv : [],
-            abvArray:[],
             sugEbc : [],
-            ebcArray:[],
+            display: 'block',
+            
         };
 };
 componentDidMount() {
@@ -32,59 +31,64 @@ FetchArrays = () => {
            console.log(error);});
 };
  showSuggestions=()=>{
-     //this.FetchAbv();
-     //this.FetchEbc();
+     this.FetchAbv();
+     this.FetchEbc();
      this.SetIbu();
+     this.setState({
+         display:'none',
+     })
 };       
     
 SetIbu = () => {
-    const ibu =this.props.detailData.id;
-    console.log ('ibu', ibu)
+    const id =this.props.detailData.id;
     const newIbuArray = this.state.allData.sort((a, b) => { return a.ibu - b.ibu});
-    console.log (newIbuArray)
-    const index=newIbuArray.map(beer=>{
-        beer.id=ibu
-    })
-    console.log('indexibu', index)
-    const ibuSug=newIbuArray[index+1];
-    console.log('ibuSug', ibuSug)
-    
-            this.setState({sugIbu: ibuSug,
-                           loadingIbu:true,})
-
+    let indexArray=[];
+    Object.getOwnPropertyNames(newIbuArray).forEach(
+        (val, idx, array)=>{
+             indexArray.push(newIbuArray[val].id)
+    }
+    );
+    const newIndex=indexArray.indexOf(id)+1;
+    const sugIbu=newIbuArray[newIndex];
+           this.setState({sugIbu,
+                         loadingIbu:true
+        })
 };
 
 FetchAbv = () => {
-    const abv = this.props.detailData.abv;
-    console.log('abv', abv)
-     console.log(this.state.abvArray);
-    const index=this.state.abvArray.indexOf(abv);
-    const num=this.state.abvArray[index+1];
-     console.log('numabv', num)
-    axios.get(`https://api.punkapi.com/v2/beers?abv=${num}`)
-        .then(response => {
-            this.setState({sugAbv: response.data,
-                           loadingAbv: true})
-            console.log('sugAbv', this.state.sugAbv)
-        })
-};
+    const id = this.props.detailData.id;
+    const newAbvArray=this.state.allData.sort((a, b)=>{return a.abv -b.abv});
+    let indexArray=[];
+    Object.getOwnPropertyNames(newAbvArray).forEach((val, idx, array)=>{
+        indexArray.push(newAbvArray[val].id)
+    });
+    const newIndex=indexArray.indexOf(id)+1;
+    const sugAbv=newAbvArray[newIndex];
+         this.setState({
+             sugAbv,
+             loadingAbv: true
+  })
+}
+  
 FetchEbc = () => {
-    const ebc = this.props.detailData.ebc;
-    console.log(this.state.ebcArray);
-    const index=this.state.ebcArray.indexOf(ebc);
-    const num=this.state.ebcArray[index+1];
-    console.log('numebc', num)
-    axios.get(`https://api.punkapi.com/v2/beers?ebc=${num}`)
-        .then(response => {
-            this.setState({sugEbc: response.data,
-                           loadingEbc: true})
-        });
-    console.log('sugEbc', this.state.sugEbc)
+    const id = this.props.detailData.id;
+    const newEbcArray=this.state.allData.sort((a, b)=>{return a.ebc- b.ebc});
+    let indexArray=[];
+    Object.getOwnPropertyNames(newEbcArray).forEach((val, idx, array)=>{
+        indexArray.push(newEbcArray[val].id)
+    });
+    const newIndex=indexArray.indexOf(id)+1;
+    const sugEbc=newEbcArray[newIndex];
+        this.setState({
+            sugEbc,
+            loadingEbc: true
+        })
+    
 };
    
     render(){
         return <div> 
-                <button onClick={this.showSuggestions}>Show other similar beers</button>
+                <button onClick={this.showSuggestions} style={{display:this.state.display}}>Show other similar beers</button>
                 {this.state.loadingIbu?(<BeerItem beer={this.state.sugIbu}/>): null}
                 {this.state.loadingAbv?(<BeerItem beer={this.state.sugAbv}/>): null}
                 {this.state.loadingEbc ?(<BeerItem beer={this.state.sugEbc}/>): null}
