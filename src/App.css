@@ -2,8 +2,15 @@
   text-align: center;
 }
 
+body{
+  padding-top:65px;
+}
 .displayButton{
   display: none
+}
+nav{
+  background-color: white;
+  
 }
 .navbar-right{
   display:flex;
@@ -14,6 +21,7 @@
  position: fixed;
  top: 0;
  width:100%;
+ 
 }
 img{
   
@@ -22,7 +30,7 @@ img{
  padding-bottom: 20px;
 }
 
-#beerItem{
+.beerItem{
   width: 250px;
   height: 370px;
   
@@ -30,13 +38,7 @@ img{
   margin-top: 10px;
   
 }
-#favBeer{
-  width: 250px;
-  height: 370px;
-  
-  margin-left: 10px;
-  margin-top: 10px;
-}
+
 .tagLine{
   margin-top: 7px;
   margin-bottom: 10px;

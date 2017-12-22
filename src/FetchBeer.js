@@ -34,7 +34,7 @@ export default class FetchBeer extends React.Component{
     render(){
         const data=this.state.data;
         return <div>
-                    <nav className = 'navbar navbar-default' > 
+                    <nav className = 'navbar navbar-default'> 
                         <div className='container-fluid'>
                             <div className='navbar-header'>
                                  <h2 className='navbar-brand'>Your Cervesa App</h2 >
@@ -46,10 +46,10 @@ export default class FetchBeer extends React.Component{
                         </ul>
                         </div> 
                     </nav>
-                    <div className='sweet-loading'>
-                        <RingLoader color={'#123abc'} loading={this.state.loading}/>
-                    </div>
                         <DisplayBeers data = {data} dataScrol = {this.state.dataScrol} />
+                    <div className = 'sweet-loading' > 
+                          <RingLoader color={'#123abc'} loading={this.state.loading}/>
+                     </div>
                 </div>
     }
 }
