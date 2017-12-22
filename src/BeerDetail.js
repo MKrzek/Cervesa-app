@@ -49,18 +49,31 @@ FetchDetailData=(id)=>{
                    </ul>
                   </div> 
                 </nav>
-            <div>
-                <h3>{name}</h3>
-                <img src={image_url} alt='beer'/> 
-                <div>{description}</div>
-                <div>{abv}</div>
-                <div>{brewers_tips}</div>
-            </div>
-            <div>  
-               <LocalStorage beer={this.state.detailData}/>
-            </div>
-                <Suggestions detailData={this.state.detailData}/>
-            </div>
+            <div className='container'>
+              <div className='row justify-content-center align-items-center rowDetail'>
+                  <div className='col-md-4 text-center'> <img src={image_url} alt='beer'/>
+                  </div>
+                  <div className='col-md-8 card'>
+                      <h3 className='text-center card-title mb-4 mt-5'>{name}</h3>
+                      <div className='card-body'>
+                      <h6 className='text-center mb-2'>{description}</h6>
+                      <div className='text-center mb-2'>Abv: {abv}</div>
+                      <div className='text-center text-muted mb-5'>{brewers_tips}</div>
+                     <LocalStorage beer={this.state.detailData}/>
+                     </div>
+               </div>
+
+               </div>
+              
+              
+                <div>
+                    <Suggestions detailData={this.state.detailData}/>
+                </div>
+                </div>
+                </div>
+           
+           
+            
                  
            
  

@@ -35,8 +35,8 @@ handleAdd = (event) => {
 
     }
     render(){
-        return<div>
-                 <button onClick = { this.handleAdd} > Add to favourites </button>
+        return<div className='text-center'>
+          <button onClick = { this.handleAdd} className = 'btn btn-info bmd-btn-fab'><i className='material-icons'> grade</i></button>
                   <AlertContainer ref = { a => this.msg = a} { ...this.alertOptions} />
               </div>
     }

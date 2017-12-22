@@ -8,7 +8,7 @@ export default class BeerItem extends React.Component{
             
             return   <div onClick={this.showDetail} className='col card' id='beerItem'>
                             <div className = 'text-center'> <img src={image_url} alt='beer'/> </div>
-                             <div className = 'text-center'> <Link className="btn btn-primary btn-wrap-text" to={`/detail/${id}`}>{name}</Link> </div>
+                             <div className = 'text-center'> <Link className= 'btn btn-info btn-wrap-text' to={`/detail/${id}`}>{name}</Link> </div>
                             <p className='text-center tagLine'>{tagline}</p>
                      </div>
                   

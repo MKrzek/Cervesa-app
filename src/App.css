@@ -33,15 +33,21 @@ img{
 #favBeer{
   width: 250px;
   height: 370px;
-  border: 1px solid grey;
+  
   margin-left: 10px;
   margin-top: 10px;
 }
 .tagLine{
-  margin-top: 10px;
-  margin-bottom: 0;
+  margin-top: 7px;
+  margin-bottom: 10px;
 }
 .btn-wrap-text {
     white-space: normal !important;
     word-wrap: break-word !important;
+}
+div.rowDetail{
+   margin-top: 100px;
+}
+div.col-md-4>img{
+  height: 500px;
 }

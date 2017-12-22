@@ -87,12 +87,14 @@ FetchEbc = () => {
 };
    
     render(){
-        return <div> 
-                Similar beers: 
-                <button onClick={this.showSuggestions} style={{display:this.state.display}}>Show other similar beers</button>
+        return <div className='container'> 
+                    <div className = 'row justify-content-center align-items-center' >
+                
+         <button className = 'btn btn-outline-info'  onClick={this.showSuggestions} style={{display:this.state.display}}>You may also like</button>
                 {this.state.loadingIbu?(<BeerItem beer={this.state.sugIbu}/>): null}
                 {this.state.loadingAbv?(<BeerItem beer={this.state.sugAbv}/>): null}
                 {this.state.loadingEbc ?(<BeerItem beer={this.state.sugEbc}/>): null}
+               </div>
                </div>
     }
 }
