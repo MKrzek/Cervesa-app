@@ -16,6 +16,32 @@
  width:100%;
 }
 img{
-  width: 100px;
+  
   height: 250px;
+  padding-top: 30px;
+ padding-bottom: 20px;
+}
+
+#beerItem{
+  width: 250px;
+  height: 370px;
+  
+  margin-left: 10px;
+  margin-top: 10px;
+  
+}
+#favBeer{
+  width: 250px;
+  height: 370px;
+  border: 1px solid grey;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.tagLine{
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.btn-wrap-text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
 }

@@ -50,7 +50,6 @@ FetchDetailData=(id)=>{
                   </div> 
                 </nav>
             <div>
-                
                 <h3>{name}</h3>
                 <img src={image_url} alt='beer'/> 
                 <div>{description}</div>

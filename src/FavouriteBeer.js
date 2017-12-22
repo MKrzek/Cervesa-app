@@ -42,8 +42,10 @@ displayBeers=()=>{
                           </ul>
                         </div> 
                     </nav>
-                    <div>
+                    <div className='container'>
+                       <div className='row'>
                        {this.displayBeers()}
+                       </div>
                     </div>
                </div>
 

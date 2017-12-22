@@ -10,21 +10,19 @@ handleClick=()=>{
     ShowItem = () => {
         const {name, tagline, image_url, id} = this.props.beer;
 
-        return <div onClick={this.showDetail} >
-            <Link to={`/detail/${id}`}>{name}</Link>
-            <p>{tagline}</p>
-            <img src={image_url} alt='beer'/>
-            <button onClick={this.handleClick}>Remove</button>
+        return <div onClick={this.showDetail} className='col card' id='favBeer'>
+               <img src = {image_url} alt = 'beer'/>
+               <div><Link to={`/detail/${id}`}>{name}</Link></div>
+               <p>{tagline}</p>
+               <button onClick={this.handleClick}>Remove</button>
         </div>
 
     }
     render() {
         return <div>
-
-            <div>
                 {this.ShowItem()}
-            </div>
-        </div>
+              </div>
+        
 
     }
 }
