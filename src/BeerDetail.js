@@ -9,7 +9,7 @@ constructor(props){
     super(props);
     this.state={
         detailData:[], 
-        //idParams:this.props.match.params.id,
+        idParams:this.props.match.params.id,
         loading: false, 
         loadingSpinner: true,
     } 
@@ -30,8 +30,8 @@ FetchDetailData=(id)=>{
 });
 }
     render(){
-        //if (this.state.idParams!==this.props.match.params.id){
-           // window.location.reload();}
+        if (this.state.idParams!==this.props.match.params.id){
+            window.location.reload();}
         return <div>
                     <div>
                         <Navigation/>
