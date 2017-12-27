@@ -38,7 +38,9 @@ export default class FetchBeer extends React.Component{
         const data=this.state.data;
         return <div>
                     <NavigationFav/>
+                    <div>
                         {this.state.loaderData ? (<DisplayBeers data = {data} dataScrol = {this.state.dataScrol}/>) : null}
+                    </div>
                      <div className = 'sweet-loading'> 
                          <RiseLoader color={'#123abc'} loading={this.state.loading}/>
                     </div>

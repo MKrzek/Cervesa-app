@@ -15,7 +15,6 @@ constructor(props){
     } 
 };
 componentDidMount(){
- console.log('params', this.props.match.params)
  const {id}=this.props.match.params;
   this.FetchDetailData(id);
    

@@ -32,7 +32,7 @@ displayBeers=()=>{
         return <div>
                    <NavigationBeer/>
                     <div className='container'>
-                       <div className='row'>
+                       <div className='row justify-content-center'>
                        {this.displayBeers()}
                        </div>
                     </div>

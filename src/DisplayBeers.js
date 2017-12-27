@@ -41,13 +41,13 @@ export default class DisplayBeers extends React.Component{
     });
 
     return <div className='container'>
-                <div className='row'>
+                <div className='row justify-content-center'>
                   {this.ShowBeer()}
                  </div>
                  <div className= 'row justify-content-center'> 
                      <button className='btn btn-info mt-5 mb-5' onClick={this.handleClick} style={{display: this.state.display}}>Show more beer</button>     
                 </div>
-                   <div className='row'>
+                   <div className='row justify-content-center'>
                         {this.state.loading ? (moreBeers): null}
                    </div>
                    <div className='row justify-content-center'>    

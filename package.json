@@ -2,17 +2,20 @@
   "name": "cervesa-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mkrzek.github.io/Cervesa-app",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
-    
     "react-spinners": "^0.2.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
