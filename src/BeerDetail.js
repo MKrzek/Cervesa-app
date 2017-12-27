@@ -20,8 +20,6 @@ componentDidMount(){
   this.FetchDetailData(id);
    
 };
-
-
 FetchDetailData=(id)=>{
     axios.get(`https://api.punkapi.com/v2/beers/${id}`)
     .then(response=>{
@@ -29,9 +27,7 @@ FetchDetailData=(id)=>{
         detailData:response.data[0],
         loading: true,
         loadingSpinner: false,
-    });
-    
-    
+    });   
 });
 }
     render(){
@@ -41,15 +37,12 @@ FetchDetailData=(id)=>{
                     <div>
                         <Navigation/>
                     </div>   
-                    <div className='container'>
-                                      
-{this.state.loading
-        ? (<BeerDetailContent detailData={this.state.detailData}/>)
-        : (<div className='sweet-loading'><RiseLoader color={'#123abc'} loading={this.state.loadingSpinner}/></div>)}
-            </div>
-            </div>
-                
-              
+                    <div className='container'>                  
+                    {this.state.loading
+                      ? (<BeerDetailContent detailData={this.state.detailData}/>)
+                      : (<div className='sweet-loading'><RiseLoader color={'#123abc'} loading={this.state.loadingSpinner}/></div>)}
+                     </div>
+                 </div>  
             }
         }
            

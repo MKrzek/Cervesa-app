@@ -42,13 +42,18 @@ FetchArrays = () => {
 SetIbu = () => {
     const id =this.props.detailData.id;
     const newIbuArray = this.state.allData.sort((a, b) => {return a.ibu - b.ibu});
+    console.log('NewIbuArray', newIbuArray)
     let indexArray=[];
+    let newIndex=null;
     Object.getOwnPropertyNames(newIbuArray).forEach(
         (val, idx, array)=>{
              indexArray.push(newIbuArray[val].id)
     }
     );
-    const newIndex=indexArray.indexOf(id)+1;
+    if (indexArray.indexOf(id)===newIbuArray.length-1){
+        newIndex=indexArray.indexOf(id)-1
+    } else{
+         newIndex=indexArray.indexOf(id)+1;}
     const sugIbu=newIbuArray[newIndex];
            this.setState({sugIbu,
                          loadingIbu:true
@@ -59,10 +64,13 @@ FetchAbv = () => {
     const id = this.props.detailData.id;
     const newAbvArray=this.state.allData.sort((a, b)=>{return a.abv -b.abv});
     let indexArray=[];
+    let newIndex=null;
     Object.getOwnPropertyNames(newAbvArray).forEach((val, idx, array)=>{
         indexArray.push(newAbvArray[val].id)
     });
-    const newIndex=indexArray.indexOf(id)+1;
+    if (indexArray.indexOf(id)===newAbvArray.length-1){
+    newIndex=indexArray.indexOf(id)-1
+    }else{newIndex=indexArray.indexOf(id)+1};
     const sugAbv=newAbvArray[newIndex];
          this.setState({
              sugAbv,
@@ -74,18 +82,19 @@ FetchEbc = () => {
     const id = this.props.detailData.id;
     const newEbcArray=this.state.allData.sort((a, b)=>{return a.ebc- b.ebc});
     let indexArray=[];
+    let newIndex=null;
     Object.getOwnPropertyNames(newEbcArray).forEach((val, idx, array)=>{
         indexArray.push(newEbcArray[val].id)
     });
-    const newIndex=indexArray.indexOf(id)+1;
+    if (indexArray.indexOf(id)===newEbcArray.length-1){
+     newIndex=indexArray.indexOf(id)-1;
+}else{newIndex=indexArray.indexOf(id)+1};
     const sugEbc=newEbcArray[newIndex];
         this.setState({
             sugEbc,
             loadingEbc: true
         })
-    
 };
-   
     render(){
         return <div className='container'> 
                     <div className = 'row justify-content-center align-items-center' >
