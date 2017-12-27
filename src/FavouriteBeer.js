@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+
 import FavouriteItem from './FavouriteItem.js';
+import NavigationBeer from './NavigationBeer.js';
 export default class FavouriteBeer extends React.Component{
 constructor(props){
   super(props);
@@ -29,19 +30,7 @@ displayBeers=()=>{
     render(){
     localStorage.setItem('myFavBeers', JSON.stringify(this.state.beers));
         return <div>
-                    <nav className = 'navbar navbar-default'> 
-                         <div className='container-fluid'>
-                           <div className='navbar-header'>
-                             <h2 className='navbar-brand'>Your Cervesa</h2>
-                           </div>
-                          <ul className='nav navbar-nav navbar-right'>
-                             <li className='nav-item' key={1}>
-                                  <Link className='nav-link' to='/detail'>Beers</Link>
-                             </li>
-                            
-                          </ul>
-                        </div> 
-                    </nav>
+                   <NavigationBeer/>
                     <div className='container'>
                        <div className='row'>
                        {this.displayBeers()}

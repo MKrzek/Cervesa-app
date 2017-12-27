@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+
 import Suggestions from './Suggestions.js';
 import LocalStorage from './LocalStorage.js';
+import Navigation from './Navigation.js';
 
 export default class DisplayBeer extends React.Component{
 constructor(props){
@@ -38,18 +39,10 @@ FetchDetailData=(id)=>{
         const{name, image_url, description, abv, brewers_tips}=this.state.detailData;
         return(
             <div>
-                <nav className = 'navbar navbar-default'> 
-                 <div className='container-fluid'>
-                  <div className='navbar-header'>
-                     <h2 className='navbar-brand'>Your Cervesa</h2>
-                  </div>
-                        <ul className='nav navbar-nav navbar-right'>
-                            <li className='nav-item' key={1}>
-                              <Link className='nav-link' to='/detail'>Beers</Link>
-                            </li>
-                   </ul>
-                  </div> 
-                </nav>
+            <div>
+                <Navigation/>
+            </div> 
+                
             <div className='container'>
               <div className='row justify-content-center align-items-center rowDetail'>
                   <div className='col-md-4 text-center'> <img src={image_url} alt='beer'/>
@@ -63,10 +56,7 @@ FetchDetailData=(id)=>{
                        <LocalStorage beer={this.state.detailData}/>
                      </div>
                </div>
-
                </div>
-              
-              
                 <div>
                     <Suggestions detailData={this.state.detailData}/>
                 </div>

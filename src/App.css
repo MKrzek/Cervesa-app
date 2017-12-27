@@ -11,7 +11,7 @@ body{
 }
 
 nav{
-  background-color: #f44b40;
+  background-color: #ffc107;
   
 }
 
@@ -33,7 +33,6 @@ nav{
   color: #f9f9f9;
 }
 img{
-  
   height: 250px;
   padding-top: 30px;
  padding-bottom: 20px;
@@ -63,3 +62,16 @@ div.rowDetail{
 div.col-md-4>img{
   height: 500px;
 }
+.favItem{
+  width: 250px;
+  height: 440px; 
+  margin-left: 10px;
+  margin-top: 10px; 
+}
+#removeButton{
+  bottom: 10px;
+  position: absolute;
+  margin-left: 55px;
+  
+}
+

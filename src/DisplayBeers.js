@@ -13,12 +13,12 @@ export default class DisplayBeers extends React.Component{
 
         };
     };
-    //componentDidMount(){
-     //   window.addEventListener('scroll', this.handleClick);
-    //};
-    //componentWillUnmount(){
-    ///    window.removeEventListener('scroll', this.handleClick);
-    //};*/}
+    ///componentDidMount(){
+     ///   window.addEventListener('scroll', this.handleClick);
+///};
+  ///  componentWillUnmount(){
+     ///   window.removeEventListener('scroll', this.handleClick);
+   /// };
 
     
 
@@ -27,6 +27,7 @@ export default class DisplayBeers extends React.Component{
                 return <BeerItem beer={beer} key={beer.id}/>                      
     });
 };
+
     handleClick=()=>{
       this.setState({
           loading: true,

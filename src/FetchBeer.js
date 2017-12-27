@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
-import {RingLoader} from 'react-spinners';
 
+import axios from 'axios';
+import {RiseLoader} from 'react-spinners';
+import NavigationFav from './NavigationFav.js';
 import DisplayBeers from './DisplayBeers.js';
 
 export default class FetchBeer extends React.Component{
@@ -12,7 +12,8 @@ export default class FetchBeer extends React.Component{
            data:[],
            dataScrol:[],
            loading: true,
-           allData:[]
+           allData:[],
+           loaderData:false
         }
     }
     componentDidMount(){
@@ -24,7 +25,9 @@ export default class FetchBeer extends React.Component{
         .then(response=>{
            this.setState({data: response.data.slice(0, 20),
                           dataScrol: response.data.slice(20, 80), 
-                          allData: response.data
+                          allData: response.data,
+                          loaderData: true,
+                          loading: false,
         });   
         })
         .catch(error=>{
@@ -34,22 +37,11 @@ export default class FetchBeer extends React.Component{
     render(){
         const data=this.state.data;
         return <div>
-                    <nav className = 'navbar navbar-default'> 
-                        <div className='container-fluid'>
-                            <div className='navbar-header'>
-                                 <h2 className='navbar-brand'>Your Cervesa App</h2 >
-                             </div>
-                        <ul className='nav navbar-nav navbar-right'>
-                             <li className='nav-item' key={1}>
-                               <Link className='nav-link' to='/favourite'>Your favourites</Link>
-                             </li>
-                        </ul>
-                        </div> 
-                    </nav>
-                        <DisplayBeers data = {data} dataScrol = {this.state.dataScrol} />
+                    <NavigationFav/>
+                        {this.state.loaderData ? (<DisplayBeers data = {data} dataScrol = {this.state.dataScrol}/>) : null}
                     <div className = 'sweet-loading' > 
-                          <RingLoader color={'#123abc'} loading={this.state.loading}/>
-                     </div>
-                </div>
+                         <RiseLoader color={'#123abc'} loading={this.state.loading}/>
+                    </div>
+            </div>
     }
 }
