@@ -12,7 +12,7 @@ constructor(props){
 removeBeer=(beer)=>{
  
   const items=this.state.beers.filter(item=>item.id!==beer)
-  console.log ('items', items)
+  
   this.setState({
     beers: items
   });
@@ -21,7 +21,7 @@ removeBeer=(beer)=>{
 
 displayBeers=()=>{
   return this.state.beers.map(beer=>{
-    console.log('beer', beer)
+    
     return  <FavouriteItem beer={beer} key={beer.id} removeBeer={this.removeBeer}/>     
   })
 
