@@ -9,16 +9,19 @@ constructor(props){
     super(props);
     this.state={
         detailData:[], 
-        idParams:this.props.match.params.id,
+       
         loading: false, 
         loadingSpinner: true,
     } 
 };
-componentDidMount(){
- const {id}=this.props.match.params;
-  this.FetchDetailData(id);
+ componentDidMount(){
+    const {id}=this.props.match.params;
+    console.log ('detailid', id)
+    this.FetchDetailData(id);
+  
+  }
    
-};
+
 FetchDetailData=(id)=>{
     axios.get(`https://api.punkapi.com/v2/beers/${id}`)
     .then(response=>{
@@ -30,8 +33,7 @@ FetchDetailData=(id)=>{
 });
 }
     render(){
-        if (this.state.idParams!==this.props.match.params.id){
-            window.location.reload();}
+        
         return <div>
                     <div>
                         <Navigation/>

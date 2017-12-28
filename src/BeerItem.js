@@ -5,7 +5,7 @@ export default class BeerItem extends React.Component{
    
     ShowItem=()=>{
         const{name, tagline, image_url, id}=this.props.beer;
-            
+          console.log ('itemid', id)  
             return   <div onClick={this.showDetail} className='col card beerItem'>
                             <div className = 'text-center'> 
                                     <img src={image_url} alt='beer'/> 
